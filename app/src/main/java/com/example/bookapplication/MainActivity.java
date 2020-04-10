@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,10 @@ recyclerView.setLayoutManager(layoutManager);
         TitleAdapter titleAdapter= new TitleAdapter(mContext, titleList, new TitleClickListener() {
             @Override
             public void onItemClick(View itemview, int position) {
-                Toast.makeText(mContext,"Title clicker Position"+position,Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(mContext,"Title clicker Position"+position,Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,DetailActivity.class);
+                intent.putExtra("titles",titleList.get(position));
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(titleAdapter);
